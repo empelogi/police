@@ -19,7 +19,7 @@ namespace FaberController.Services
         {
             try
             {
-                var response = await _http.GetAsync("/status");
+                var response = await _http.GetAsync("http://192.168.1.8:8021/status");
                 response.EnsureSuccessStatusCode();
                 return AgentStatus.Up;
             }
@@ -34,7 +34,7 @@ namespace FaberController.Services
         {
             try
             {
-                var response = await _http.GetAsync("/connections");
+                var response = await _http.GetAsync("http://192.168.1.8:8021/connections");
                 response.EnsureSuccessStatusCode();
 
                 var responseString = await response.Content.ReadAsStringAsync();
@@ -58,7 +58,7 @@ namespace FaberController.Services
             try
             {
                 using var content = new StringContent("");
-                var response = await _http.PostAsync(string.Format("/connections/{0}/remove", connectionId), content);
+                var response = await _http.PostAsync(string.Format("http://192.168.1.8:8021/connections/{0}/remove", connectionId), content);
                 response.EnsureSuccessStatusCode();
 
                 var responseString = await response.Content.ReadAsStringAsync();
@@ -76,7 +76,7 @@ namespace FaberController.Services
             try
             {
                 using var content = new StringContent("");
-                var response = await _http.PostAsync("/connections/create-invitation", content);
+                var response = await _http.PostAsync("http://192.168.1.8:8021/connections/create-invitation", content);
                 response.EnsureSuccessStatusCode();
 
                 var responseString = await response.Content.ReadAsStringAsync();
@@ -95,7 +95,7 @@ namespace FaberController.Services
             {
 
                 using var content = new StringContent(invitation);
-                var response = await _http.PostAsync("/connections/receive-invitation", content);
+                var response = await _http.PostAsync("http://192.168.1.8:8021/connections/receive-invitation", content);
 
                 response.EnsureSuccessStatusCode();
 
@@ -113,7 +113,7 @@ namespace FaberController.Services
         {
             try
             {
-                var response = await _http.GetAsync("/schemas/created");
+                var response = await _http.GetAsync("http://192.168.1.8:8021/schemas/created");
                 response.EnsureSuccessStatusCode();
 
                 var responseString = await response.Content.ReadAsStringAsync();
@@ -132,7 +132,7 @@ namespace FaberController.Services
         {
             try
             {
-                var response = await _http.GetAsync(string.Format("/schemas/{0}", schemaId));
+                var response = await _http.GetAsync(string.Format("http://192.168.1.8:8021/schemas/{0}", schemaId));
                 response.EnsureSuccessStatusCode();
 
                 var responseString = await response.Content.ReadAsStringAsync();
@@ -150,7 +150,7 @@ namespace FaberController.Services
         {
             try
             {
-                var response = await _http.GetAsync("/credential-definitions/created");
+                var response = await _http.GetAsync("http://192.168.1.8:8021/credential-definitions/created");
                 response.EnsureSuccessStatusCode();
 
                 var responseString = await response.Content.ReadAsStringAsync();
@@ -169,7 +169,7 @@ namespace FaberController.Services
         {
             try
             {
-                var response = await _http.GetAsync(string.Format("/credential-definitions/{0}", credentialDefinitionId));
+                var response = await _http.GetAsync(string.Format("http://192.168.1.8:8021/credential-definitions/{0}", credentialDefinitionId));
                 response.EnsureSuccessStatusCode();
 
                 var responseString = await response.Content.ReadAsStringAsync();
@@ -189,7 +189,7 @@ namespace FaberController.Services
             {
 
                 using var content = new StringContent(credential);
-                var response = await _http.PostAsync("/issue-credential/send", content);
+                var response = await _http.PostAsync("http://192.168.1.8:8021/issue-credential/send", content);
 
                 response.EnsureSuccessStatusCode();
 
