@@ -12,18 +12,18 @@ navLinkService.registerCustomLinks([
 const proofJSON = {
     "connection_id": "<Enter a valid Connection ID>",
     "proof_request": {
-      "name": "Proof of Education",
+      "name": "Proof of Identity",
       "version": "1.0",
       "requested_attributes": {
-        "0_name_uuid": {
-          "name": "name",
+        "0_full_name_uuid": {
+          "name": "full_name",
           "restrictions": [
             {
               "cred_def_id": "<Enter a valid Credential Definition ID>"
             }
           ]
         },
-        "0_date_uuid": {
+        "0_birth_date_uuid": {
           "name": "date",
           "restrictions": [
             {
@@ -31,8 +31,8 @@ const proofJSON = {
             }
           ]
         },
-        "0_degree_uuid": {
-          "name": "degree",
+        "0_id_card_uuid": {
+          "name": "id_card",
           "restrictions": [
             {
               "cred_def_id": "<Enter a valid Credential Definition ID>"
